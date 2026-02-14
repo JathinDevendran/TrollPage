@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#f8d7e3">
+    <title>Happy Valentine's Day, Jaan ❤️</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fef5f7 0%, #f8d7e3 50%, #f5c7d4 100%);
+            background-size: 200% 200%;
+            color: #4a4a4a;
+            position: relative;
+            transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.cinematic-bg {
+            background-image: url('photos/Background1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        body.cinematic-bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 0;
+        }
+
+        .hidden { 
+            display: none !important; 
+        }
+
+        /* ===== PREMIUM TRANSITIONS ===== */
+        @keyframes fadeInStage {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+                filter: blur(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes fadeOutStage {
+            from { 
+                opacity: 1; 
+                transform: translateY(0);
+                filter: blur(0);
+            }
+            to { 
+                opacity: 0; 
+                transform: translateY(-30px);
+                filter: blur(10px);
+            }
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes softGlowPulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 182, 193, 0.3),
+                            0 0 40px rgba(255, 182, 193, 0.2); 
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 182, 193, 0.6),
+                            0 0 80px rgba(255, 182, 193, 0.4),
+                            0 0 120px rgba(255, 182, 193, 0.2); 
+            }
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: 0.5; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 182, 193, 0.8); }
+        }
+
+        @keyframes petalFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 182, 193, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 182, 193, 0.8), 0 0 30px rgba(255, 182, 193, 0.6); }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(2) rotate(180deg); opacity: 0; }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-150px) rotate(15deg); opacity: 0; }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes heartBurst {
+            0% { transform: scale(0) translateY(0); opacity: 1; }
+            50% { opacity: 1; }
+            100% { transform: scale(1) translateY(-100px); opacity: 0; }
+        }
+
+        @keyframes goldShimmer {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-200px) rotate(180deg); opacity: 0; }
+        }
+
+        /* ===== FLOATING HEARTS ===== */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.2;
+            animation: heartFloat 6s ease-in-out infinite;
+        }
+
+        /* ===== STAGE CONTAINER ===== */
+        .stage {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stage:not(.hidden) {
+            animation: fadeInStage 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* ===== GLASSMORPHISM CARD ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 500px;
+            width: 100%;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #d47a8c;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #d47a8c;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #6a6a6a;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            background: linear-gradient(135deg, #f5a7b8, #d47a8c);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(212, 122, 140, 0.3);
+            touch-action: manipulation;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 30px rgba(212, 122, 140, 0.5);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== YES/NO PROPOSAL SECTION ===== */
+        .question-text {
+            font-size: 1.6rem;
+            color: #d47a8c;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .button-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 80px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            position: relative;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.05);
+            animation: softGlowPulse 2s ease-in-out infinite;
+        }
+
+        .btn-no {
+            position: absolute;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+        }
+
+        /* ===== EXPOSURE OVERLAY ===== */
+        .exposure-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInStage 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .exposure-image {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slowZoom 3s ease-in-out;
+        }
+
+        .exposure-text {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f5a7b8, #d47a8c);
+            border-radius: 10px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(212, 122, 140, 0.5);
+        }
+
+        /* ===== QUIZ ===== */
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #d47a8c;
+            text-align: center;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            font-size: 1.05rem;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: translateX(5px);
+            border-color: rgba(212, 122, 140, 0.3);
+        }
+
+        .quiz-option.correct {
+            background: linear-gradient(135deg, rgba(134, 239, 172, 0.4), rgba(74, 222, 128, 0.4));
+            border-color: #4ade80;
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .quiz-option.wrong {
+            animation: shake 0.5s ease-in-out;
+            background: rgba(248, 113, 113, 0.2);
+        }
+
+        /* ===== PUZZLE ===== */
+        .puzzle-intro {
+            text-align: center;
+            font-size: 1rem;
+            color: #d47a8c;
+            margin-bottom: 15px;
+        }
+
+        .puzzle-helper {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 20px;
+            min-height: 24px;
+        }
+
+        .puzzle-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .puzzle-board {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 8px 24px rgba(212, 122, 140, 0.15);
+        }
+
+        .puzzle-grid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .puzzle-slot {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .puzzle-piece {
+            width: 100%;
+            height: 100%;
+            background-size: 300% 300%;
+            border-radius: 10px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .puzzle-piece:hover:not(.locked) {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(212, 122, 140, 0.3);
+        }
+
+        .puzzle-piece.selected {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 3px #d47a8c, 0 4px 12px rgba(212, 122, 140, 0.4);
+            animation: glow 1s ease-in-out infinite;
+        }
+
+        .puzzle-piece.locked {
+            cursor: default;
+            opacity: 0.9;
+            box-shadow: 0 0 0 2px #4ade80, 0 4px 12px rgba(74, 222, 128, 0.3);
+        }
+
+        .puzzle-piece.correct-placement {
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .sparkle-effect {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #ffd700, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 0.8s ease-out forwards;
+        }
+
+        .completion-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.3), transparent);
+            pointer-events: none;
+            z-index: 50;
+            animation: shimmer 2s ease-in-out;
+        }
+
+        .celebration-heart {
+            position: fixed;
+            font-size: 28px;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatUp 2.5s ease-out forwards;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 1rem;
+            color: #d47a8c;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        /* ===== ROSE PETAL GAME ===== */
+        .rose-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 40px auto;
+        }
+
+        .rose-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ffd700, #d4af37);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border-radius: 50% 50% 50% 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+        }
+
+        .petal:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+        }
+
+        .petal.falling {
+            animation: petalFall 2s ease-in forwards;
+            pointer-events: none;
+        }
+
+        .petal-text {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #d47a8c;
+            margin-top: 20px;
+            min-height: 30px;
+            font-weight: 500;
+        }
+
+        /* ===== LOVE LETTER ===== */
+        .love-letter {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .love-letter p {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #5a5a5a;
+        }
+
+        .pet-name {
+            color: #d47a8c;
+            font-weight: 600;
+        }
+
+        .glowing-text {
+            background: linear-gradient(135deg, #ff69b4, #d47a8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-style: italic;
+            color: #d47a8c;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        /* ===== HEART BURST PARTICLES ===== */
+        .heart-burst {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 1000;
+            animation: heartBurst 1.5s ease-out forwards;
+        }
+
+        .gold-particle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffd700, #ffed4e);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: goldShimmer 2s ease-out forwards;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .glass-card { padding: 30px 20px; }
+            .btn { padding: 14px 40px; font-size: 1rem; }
+            .question-text { font-size: 1.3rem; }
+            .button-container { gap: 15px; }
+            .puzzle-board { max-width: 350px; }
+            .rose-container { width: 250px; height: 250px; }
+            .petal { width: 50px; height: 70px; }
+        }
+
+        @media (max-width: 480px) {
+            .glass-card { padding: 25px 15px; }
+            .puzzle-board { max-width: 300px; }
+            .exposure-image { max-width: 95%; max-height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Stage 1: Welcome -->
+    <div class="stage" id="stage1">
+        <div class="glass-card">
+            <h1>Happy Valentine's Day, Jaan ❤️</h1>
+            <p style="margin-top: 20px; font-size: 1.15rem; line-height: 1.8;">
+                I made something special for you…<br>
+                A journey through us 💕
+            </p>
+            <button class="btn" onclick="startJourney()" style="margin-top: 30px;">Start Our Story</button>
+        </div>
+    </div>
+
+    <!-- Stage 2: Quiz -->
+    <div class="stage hidden" id="stage2">
+        <div class="glass-card">
+            <h2>Let's See How Well You Remember...</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div class="quiz-question" id="quizQuestion"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+        </div>
+    </div>
+
+    <!-- Stage 3: Puzzle -->
+    <div class="stage hidden" id="stage3">
+        <div class="glass-card">
+            <h2>Puzzle <span id="puzzleLevel">1</span> of 3</h2>
+            <div class="timer" id="puzzleTimer">00:00</div>
+            <div class="puzzle-intro">Just a small puzzle for my smart girl 🧩💕</div>
+            <div class="puzzle-helper" id="puzzleHelper">Tap any two pieces to swap 💕</div>
+            <div class="puzzle-container">
+                <div class="puzzle-board">
+                    <div class="puzzle-grid" id="puzzleGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stage 4: Rose -->
+    <div class="stage hidden" id="stage4">
+        <div class="glass-card">
+            <h2>The Rose Knows…</h2>
+            <div class="rose-container" id="roseContainer">
+                <div class="rose-center"></div>
+            </div>
+            <div class="petal-text" id="petalText"></div>
+        </div>
+    </div>
+
+    <!-- Stage 5: Transition Message -->
+    <div class="stage hidden" id="stage5">
+        <div class="glass-card">
+            <h2>One More Question...</h2>
+            <p style="margin-top: 20px;">The most important one.</p>
+            <button class="btn" onclick="goToStage(6)" style="margin-top: 30px;">I'm Ready ❤️</button>
+        </div>
+    </div>
+
+    <!-- Stage 6: Final Question -->
+    <div class="stage hidden" id="stage6">
+        <div class="glass-card">
+            <div class="question-text">
+                Will you be my Valentine forever?<br>
+                And let me be yours forever?
+            </div>
+            <div class="button-container" id="proposalContainer">
+                <button class="btn btn-yes" onclick="handleYes()">YES 💖</button>
+                <button class="btn btn-no" id="noButton" onclick="handleNo()">NO 😏</button>
+            </div>
+            <p id="exposureMessage" style="margin-top: 20px; font-size: 0.95rem; color: #999;"></p>
+        </div>
+    </div>
+
+    <!-- Stage 7: Love Letter -->
+    <div class="stage hidden" id="stage7">
+        <div class="glass-card" style="max-width: 700px;">
+            <div class="love-letter">
+                <p>My dearest <span class="pet-name">Jaan</span>,</p>
+                
+                <p>Do you remember 2018? When we fell into something neither of us expected but both of us needed? We were so young, so sure, so completely lost in each other. For almost a year, you were my favorite hello and hardest goodbye.</p>
+                
+                <p>And then... life happened. You left. And I won't lie, <span class="pet-name">baby</span>, it broke something in me. But what's strange is what it didn't break.</p>
+                
+                <p>We tried moving on. We dated others. We built new lives. But here's what I realized — we were never missing love. <span class="glowing-text">We were missing each other.</span></p>
+                
+                <p>Every relationship felt like trying to force a puzzle piece that didn't quite fit. Because the piece that fit perfectly... was always you, <span class="pet-name">Kandamma</span>.</p>
+                
+                <p>We grew separately. We learned. We became better versions of ourselves. And then destiny did what it does best — it pulled us back. Not because we were incomplete without each other, but because we're so much better together.</p>
+                
+                <p>You feel like home, <span class="pet-name">Oreo</span>. Not the place I grew up in, but the place I'm meant to grow old in. You're my best friend who makes me laugh at the dumbest things. You're my safe space when everything feels too much. You're my favorite chaos and my calmest peace.</p>
+                
+                <p>This time, it's not about right love, wrong timing. This time, we're choosing each other consciously. Fully. Forever.</p>
+                
+                <p>I dream about our future, <span class="pet-name">Hendthi</span>. Traveling the world together, getting lost in random cities, trying weird food and laughing when we hate it. Growing old together, supporting each other's dreams, being there through every high and low. Building a life where we're not just lovers, but partners, best friends, each other's home.</p>
+                
+                <p>I want to wake up every morning and choose you. I want to call you my wife not just in my heart, but to the whole world. I want our story to be the one people tell when they talk about love that refuses to quit.</p>
+                
+                <p style="font-size: 1.25rem; margin-top: 40px;">
+                    <span class="glowing-text">So get ready, my love…<br>
+                    Because this is just the beginning of us ❤️<br>
+                    Our forever starts now.</span>
+                </p>
+                
+                <div class="signature">
+                    Forever yours,<br>
+                    Your forever Valentine 💖
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURATION =====
+        const questions = [
+            { question: "When did we first fall in love?", options: ["2017", "2018", "2019", "2020"], correctIndex: 1 },
+            { question: "What's your favorite name I call you?", options: ["Baby", "Jaan", "Kandamma", "All of them"], correctIndex: 3 },
+            { question: "What makes us like jigsaw pieces?", options: ["We're colorful", "We fit perfectly", "We're confusing", "We're pieces"], correctIndex: 1 },
+            { question: "Why did we come back together?", options: ["We were bored", "We missed each other", "Accident", "Destiny pulled us back"], correctIndex: 3 },
+            { question: "What are we building together?", options: ["A house", "Forever", "Memories", "Dreams"], correctIndex: 1 }
+        ];
+
+        const exposureImages = ['photos/No1.jpeg', 'photos/No2.jpeg', 'photos/No3.jpeg', 'photos/No4.jpeg', 'photos/No5.jpeg'];
+
+        let currentQuestionIndex = 0;
+        let currentPuzzle = 0;
+        let noAttempts = 0;
+        let puzzleStartTime;
+        let puzzleTimerInterval;
+        let petalsRemaining = 15;
+        let currentPetalText = true;
+
+        // ===== PREMIUM STAGE TRANSITIONS =====
+        function goToStage(stageNum) {
+            const currentStage = document.querySelector('.stage:not(.hidden)');
+            
+            // Fade out current stage
+            if (currentStage) {
+                currentStage.style.animation = 'fadeOutStage 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                
+                setTimeout(() => {
+                    currentStage.classList.add('hidden');
+                    currentStage.style.animation = '';
+                    
+                    // Apply cinematic background for rose game
+                    if (stageNum === 4) {
+                        document.body.classList.add('cinematic-bg');
+                    } else if (currentStage.id === 'stage4') {
+                        document.body.classList.remove('cinematic-bg');
+                    }
+                    
+                    // Show new stage
+                    const nextStage = document.getElementById('stage' + stageNum);
+                    nextStage.classList.remove('hidden');
+                }, 500);
+            } else {
+                // First transition
+                document.getElementById('stage' + stageNum).classList.remove('hidden');
+            }
+        }
+
+        function startJourney() {
+            goToStage(2);
+            loadQuestion();
+        }
+
+        // ===== QUIZ =====
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                showQuizComplete();
+                return;
+            }
+            const q = questions[currentQuestionIndex];
+            document.getElementById('progressBar').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+            document.getElementById('quizQuestion').textContent = q.question;
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-option';
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, element) {
+            const q = questions[currentQuestionIndex];
+            if (selectedIndex === q.correctIndex) {
+                element.classList.add('correct');
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    loadQuestion();
+                }, 1000);
+            } else {
+                element.classList.add('wrong');
+                setTimeout(() => element.classList.remove('wrong'), 500);
+            }
+        }
+
+        function showQuizComplete() {
+            document.getElementById('stage2').querySelector('.glass-card').innerHTML = `
+                <h2>You unlocked something beautiful… ✨</h2>
+                <p style="margin-top: 20px;">Just like how we unlocked each other's hearts again.</p>
+                <button class="btn" onclick="startPuzzle()" style="margin-top: 30px;">Continue</button>
+            `;
+        }
+
+        // ===== SIMPLE CLICK-TO-SWAP PUZZLE ENGINE =====
+        const puzzleImages = ['photos/Jigsaw1.jpeg', 'photos/Jigsaw2.jpeg', 'photos/Jigsaw3.jpeg'];
+        const helperMessages = [
+            "Tap any two pieces to swap 💕",
+            "You're doing amazing baby 🥺",
+            "Almost there jaan 💖",
+            "My smart girl 😭❤️",
+            "So close now! 🥰"
+        ];
+
+        let puzzle = {
+            pieces: [],
+            slots: [],
+            selectedPiece: null,
+            completed: false
+        };
+        
+        let autoSolveTimer = null;
+
+        function startPuzzle() {
+            goToStage(3);
+            initPuzzle();
+        }
+
+        function initPuzzle() {
+            puzzle.completed = false;
+            puzzle.selectedPiece = null;
+            const grid = document.getElementById('puzzleGrid');
+            grid.innerHTML = '';
+            
+            // Create shuffled positions
+            let positions = Array.from({length: 9}, (_, i) => i);
+            shuffleArray(positions);
+
+            // Create 9 slots with pieces
+            puzzle.pieces = [];
+            puzzle.slots = [];
+            
+            for (let slotIndex = 0; slotIndex < 9; slotIndex++) {
+                // Create slot
+                const slot = document.createElement('div');
+                slot.className = 'puzzle-slot';
+                
+                // Create piece
+                const correctIndex = positions[slotIndex];
+                const piece = document.createElement('div');
+                piece.className = 'puzzle-piece';
+                
+                const row = Math.floor(correctIndex / 3);
+                const col = correctIndex % 3;
+                piece.style.backgroundImage = `url('${puzzleImages[currentPuzzle]}')`;
+                piece.style.backgroundPosition = `${col * 50}% ${row * 50}%`;
+                
+                // Store piece data
+                const pieceData = {
+                    element: piece,
+                    correctIndex: correctIndex,
+                    currentSlot: slotIndex,
+                    locked: false
+                };
+                
+                puzzle.pieces.push(pieceData);
+                
+                // Add click handler
+                piece.onclick = () => handlePieceClick(pieceData);
+                
+                // Add piece to slot
+                slot.appendChild(piece);
+                grid.appendChild(slot);
+                
+                puzzle.slots.push({
+                    index: slotIndex,
+                    piece: pieceData
+                });
+            }
+
+            // Check initial state
+            checkAllPieces();
+
+            startHelperMessages();
+            startPuzzleTimer();
+            
+            // Start 5-minute auto-solve timer
+            if (autoSolveTimer) clearTimeout(autoSolveTimer);
+            autoSolveTimer = setTimeout(handleAutoSolve, 300000); // 5 minutes
+        }
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        function handlePieceClick(pieceData) {
+            if (puzzle.completed || pieceData.locked) return;
+
+            // First click - select piece
+            if (!puzzle.selectedPiece) {
+                puzzle.selectedPiece = pieceData;
+                pieceData.element.classList.add('selected');
+                return;
+            }
+
+            // Second click - swap pieces
+            if (puzzle.selectedPiece === pieceData) {
+                // Clicked same piece - deselect
+                pieceData.element.classList.remove('selected');
+                puzzle.selectedPiece = null;
+                return;
+            }
+
+            // Different piece - swap
+            swapPieces(puzzle.selectedPiece, pieceData);
+            puzzle.selectedPiece.element.classList.remove('selected');
+            puzzle.selectedPiece = null;
+        }
+
+        function swapPieces(piece1, piece2) {
+            const slot1 = piece1.currentSlot;
+            const slot2 = piece2.currentSlot;
+
+            // Swap current slots
+            piece1.currentSlot = slot2;
+            piece2.currentSlot = slot1;
+
+            // Update slot references
+            puzzle.slots[slot1].piece = piece2;
+            puzzle.slots[slot2].piece = piece1;
+
+            // Swap DOM elements
+            const parent1 = piece1.element.parentNode;
+            const parent2 = piece2.element.parentNode;
+
+            parent1.appendChild(piece2.element);
+            parent2.appendChild(piece1.element);
+
+            // Check if pieces are now correct
+            checkPiece(piece1);
+            checkPiece(piece2);
+
+            // Check if puzzle is complete
+            checkPuzzleComplete();
+        }
+
+        function checkPiece(piece) {
+            if (piece.currentSlot === piece.correctIndex) {
+                piece.locked = true;
+                piece.element.classList.add('locked', 'correct-placement');
+                createSparkles(piece.element);
+                setTimeout(() => piece.element.classList.remove('correct-placement'), 400);
+            } else {
+                piece.locked = false;
+                piece.element.classList.remove('locked');
+            }
+        }
+
+        function checkAllPieces() {
+            puzzle.pieces.forEach(piece => checkPiece(piece));
+        }
+
+        function createSparkles(element) {
+            const rect = element.getBoundingClientRect();
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle-effect';
+                    sparkle.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 50) + 'px';
+                    sparkle.style.top = (rect.top + rect.height / 2 + (Math.random() - 0.5) * 50) + 'px';
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 800);
+                }, i * 100);
+            }
+        }
+
+        function checkPuzzleComplete() {
+            const complete = puzzle.pieces.every(p => p.currentSlot === p.correctIndex);
+            
+            if (complete && !puzzle.completed) {
+                puzzle.completed = true;
+                stopHelperMessages();
+                stopPuzzleTimer();
+                
+                // Clear auto-solve timer
+                if (autoSolveTimer) {
+                    clearTimeout(autoSolveTimer);
+                    autoSolveTimer = null;
+                }
+                
+                celebratePuzzle();
+                
+                const elapsed = Math.floor((Date.now() - puzzleStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                
+                // Show completion message briefly, then auto-advance
+                setTimeout(() => {
+                    showPuzzleComplete(minutes, seconds);
+                    // Auto-advance to next puzzle after 2.5 seconds
+                    setTimeout(() => {
+                        currentPuzzle++;
+                        if (currentPuzzle < 3) {
+                            loadNextPuzzle();
+                        } else {
+                            startRoseGame();
+                        }
+                    }, 2500);
+                }, 1500);
+            }
+        }
+        
+        // ===== AUTO-SOLVE FEATURES =====
+        function handleAutoSolve() {
+            if (puzzle.completed) return;
+            
+            puzzle.completed = true;
+            stopHelperMessages();
+            stopPuzzleTimer();
+            
+            if (autoSolveTimer) {
+                clearTimeout(autoSolveTimer);
+                autoSolveTimer = null;
+            }
+            
+            autoPlaceAllPieces();
+        }
+        
+        function autoPlaceAllPieces() {
+            document.getElementById('puzzleHelper').textContent = "Let me help you baby... 💕";
+            
+            // Remove any selection
+            if (puzzle.selectedPiece) {
+                puzzle.selectedPiece.element.classList.remove('selected');
+                puzzle.selectedPiece = null;
+            }
+            
+            // Animate each piece to correct position
+            let swapsNeeded = [];
+            
+            // Build list of swaps needed
+            puzzle.pieces.forEach((piece, index) => {
+                if (piece.currentSlot !== piece.correctIndex) {
+                    swapsNeeded.push(piece);
+                }
+            });
+            
+            // Perform swaps with animation
+            let swapIndex = 0;
+            const performSwap = () => {
+                if (swapIndex >= swapsNeeded.length) {
+                    // All done - show message
+                    setTimeout(() => {
+                        showSweetAutoSolveMessage();
+                    }, 500);
+                    return;
+                }
+                
+                const piece = swapsNeeded[swapIndex];
+                if (piece.currentSlot !== piece.correctIndex) {
+                    // Find piece that's in our correct spot
+                    const targetPiece = puzzle.slots[piece.correctIndex].piece;
+                    
+                    if (targetPiece && targetPiece !== piece) {
+                        swapPieces(piece, targetPiece);
+                    }
+                }
+                
+                swapIndex++;
+                setTimeout(performSwap, 300);
+            };
+            
+            performSwap();
+        }
+        
+        function showSweetAutoSolveMessage() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            `;
+            
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 30px;
+                padding: 50px 40px;
+                max-width: 500px;
+                width: 90%;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                text-align: center;
+                transform: scale(0.9);
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            `;
+            
+            popup.innerHTML = `
+                <div style="font-size: 1.4rem; color: #d47a8c; line-height: 1.8; margin-bottom: 30px;">
+                    Awww… you really tried baby 🥺❤️<br><br>
+                    But it's okay… If you can't solve it, I'll solve it for you.<br><br>
+                    Just like in life… If something gets hard, I'll be there for you always 💕
+                </div>
+                <button class="btn" id="autoSolveContinue" style="margin-top: 20px;">Continue ❤️</button>
+            `;
+            
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+            
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                popup.style.transform = 'scale(1)';
+            }, 10);
+            
+            document.getElementById('autoSolveContinue').onclick = () => {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                    currentPuzzle++;
+                    if (currentPuzzle < 3) {
+                        loadNextPuzzle();
+                    } else {
+                        startRoseGame();
+                    }
+                }, 500);
+            };
+        }
+        
+        function loadNextPuzzle() {
+            document.getElementById('stage3').querySelector('.glass-card').innerHTML = `
+                <h2>Puzzle <span id="puzzleLevel">${currentPuzzle + 1}</span> of 3</h2>
+                <div class="timer" id="puzzleTimer">00:00</div>
+                <div class="puzzle-intro">Just a small puzzle for my smart girl 🧩💕</div>
+                <div class="puzzle-helper" id="puzzleHelper">Tap any two pieces to swap 💕</div>
+                <div class="puzzle-container">
+                    <div class="puzzle-board">
+                        <div class="puzzle-grid" id="puzzleGrid"></div>
+                    </div>
+                </div>
+            `;
+            
+            initPuzzle();
+        }
+
+        function celebratePuzzle() {
+            document.getElementById('puzzleHelper').textContent = "You did it! 🥺💕";
+            
+            // Glow
+            const glow = document.createElement('div');
+            glow.className = 'completion-glow';
+            document.body.appendChild(glow);
+            setTimeout(() => glow.remove(), 2000);
+            
+            // Hearts
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'celebration-heart';
+                    heart.textContent = ['💕', '💖', '💗', '💝'][Math.floor(Math.random() * 4)];
+                    heart.style.left = (Math.random() * 80 + 10) + '%';
+                    heart.style.bottom = '10%';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 2500);
+                }, i * 120);
+            }
+        }
+
+        let helperInterval;
+        function startHelperMessages() {
+            let index = 0;
+            helperInterval = setInterval(() => {
+                if (!puzzle.completed) {
+                    document.getElementById('puzzleHelper').textContent = helperMessages[index];
+                    index = (index + 1) % helperMessages.length;
+                }
+            }, 3500);
+        }
+
+        function stopHelperMessages() {
+            clearInterval(helperInterval);
+        }
+
+        function startPuzzleTimer() {
+            puzzleStartTime = Date.now();
+            puzzleTimerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - puzzleStartTime) / 1000);
+                const m = Math.floor(elapsed / 60);
+                const s = elapsed % 60;
+                document.getElementById('puzzleTimer').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function stopPuzzleTimer() {
+            clearInterval(puzzleTimerInterval);
+        }
+
+        function showPuzzleComplete(minutes, seconds) {
+            const isLast = currentPuzzle === 2;
+            document.getElementById('stage3').querySelector('.glass-card').innerHTML = `
+                <h2 style="animation: textGlow 2s ease-in-out infinite;">Complete! 🎉</h2>
+                <p style="margin-top: 25px; font-size: 1.15rem; line-height: 1.8; color: #6a6a6a;">
+                    You solved it 🥺❤️<br><br>
+                    See… even puzzles come together perfectly.<br>
+                    Just like us 💕<br><br>
+                    Time: ${minutes}m ${seconds}s
+                </p>
+                ${isLast ? `<p style="margin-top: 30px; line-height: 1.8; font-size: 1.05rem; color: #888;">
+                    Sometimes life scatters us, but the right pieces always find their way home. 🧩💖
+                </p>` : `<p style="margin-top: 25px; font-size: 1rem; color: #999;">Loading next puzzle...</p>`}
+            `;
+        }
+
+        // ===== ROSE GAME =====
+        function startRoseGame() {
+            goToStage(4);
+            createRosePetals();
+        }
+
+        function createRosePetals() {
+            const container = document.getElementById('roseContainer');
+            container.querySelectorAll('.petal').forEach(p => p.remove());
+            petalsRemaining = 15;
+            currentPetalText = true;
+            document.getElementById('petalText').textContent = '';
+            
+            const angleStep = (2 * Math.PI) / 15;
+            const radius = 120;
+            
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                const angle = i * angleStep - Math.PI / 2;
+                const x = 150 + radius * Math.cos(angle) - 30;
+                const y = 150 + radius * Math.sin(angle) - 40;
+                petal.style.left = x + 'px';
+                petal.style.top = y + 'px';
+                petal.style.transform = `rotate(${angle * 180 / Math.PI + 90}deg)`;
+                petal.onclick = () => pluckPetal(petal);
+                container.appendChild(petal);
+            }
+        }
+
+        function pluckPetal(petal) {
+            if (petal.classList.contains('falling')) return;
+            petal.classList.add('falling');
+            petalsRemaining--;
+            document.getElementById('petalText').textContent = currentPetalText ? "He loves me 💕" : "He loves me not 💔";
+            currentPetalText = !currentPetalText;
+            setTimeout(() => petal.remove(), 2000);
+            if (petalsRemaining === 0) setTimeout(showRoseQuestion, 1000);
+        }
+
+        function showRoseQuestion() {
+            document.getElementById('stage4').querySelector('.glass-card').innerHTML = `
+                <h2>What was the answer?</h2>
+                <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 15px;">
+                    <button class="btn" onclick="checkRoseAnswer(true)">He loves me 🤍</button>
+                    <button class="btn" onclick="checkRoseAnswer(false)">He loves me not 💔</button>
+                </div>
+            `;
+        }
+
+        function checkRoseAnswer(isCorrect) {
+            const card = document.getElementById('stage4').querySelector('.glass-card');
+            if (isCorrect) {
+                card.innerHTML = `
+                    <h2>See? Even the universe agrees 🤍</h2>
+                    <button class="btn" onclick="goToStage(5)" style="margin-top: 30px;">Continue</button>
+                `;
+            } else {
+                card.style.background = 'rgba(255, 182, 193, 0.3)';
+                card.innerHTML = `
+                    <h2>You are wrong… try again 💔</h2>
+                    <button class="btn" onclick="resetRoseGame()" style="margin-top: 30px;">Try Again</button>
+                `;
+            }
+        }
+
+        function resetRoseGame() {
+            const card = document.getElementById('stage4').querySelector('.glass-card');
+            card.style.background = 'rgba(255, 255, 255, 0.25)';
+            card.innerHTML = `
+                <h2>The Rose Knows…</h2>
+                <div class="rose-container" id="roseContainer">
+                    <div class="rose-center"></div>
+                </div>
+                <div class="petal-text" id="petalText"></div>
+            `;
+            createRosePetals();
+        }
+
+        // ===== PREMIUM YES/NO PROPOSAL WITH FIXED LOGIC =====
+        function handleNo() {
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.querySelector('.btn-yes');
+            const container = document.getElementById('proposalContainer');
+            
+            if (noAttempts < 5) {
+                // Show exposure image
+                showExposureImage(noAttempts);
+                
+                // Scale YES button progressively
+                const newScale = 1 + (noAttempts + 1) * 0.15;
+                yesButton.style.transform = `scale(${newScale})`;
+                
+                // Move NO button to random safe position
+                setTimeout(() => {
+                    const containerRect = container.getBoundingClientRect();
+                    const buttonWidth = 120;
+                    const buttonHeight = 60;
+                    
+                    // Calculate safe boundaries
+                    const maxX = containerRect.width - buttonWidth;
+                    const maxY = containerRect.height - buttonHeight;
+                    
+                    // Random position within safe bounds
+                    const randomX = Math.random() * Math.max(0, maxX);
+                    const randomY = Math.random() * Math.max(0, maxY);
+                    
+                    noButton.style.left = randomX + 'px';
+                    noButton.style.top = randomY + 'px';
+                }, 3000);
+                
+                noAttempts++;
+            }
+            
+            if (noAttempts >= 5) {
+                // Remove NO button from DOM after final exposure
+                setTimeout(() => {
+                    noButton.remove();
+                    document.getElementById('exposureMessage').innerHTML = `
+                        <p style="color: #d47a8c; font-size: 1.2rem; line-height: 1.8; margin-top: 20px;">
+                            My dear baby…<br>No was never an option.<br>You're forever stuck with me 😌<br><br>
+                            <span style="font-size: 0.95rem; opacity: 0.8;">There's a surprise waiting…</span>
+                        </p>
+                    `;
+                    yesButton.style.animation = 'softGlowPulse 2s ease-in-out infinite';
+                    
+                    // Center YES button
+                    yesButton.style.margin = '0 auto';
+                }, 3500);
+            }
+        }
+
+        function showExposureImage(index) {
+            const overlay = document.createElement('div');
+            overlay.className = 'exposure-overlay';
+            overlay.innerHTML = `
+                <img src="${exposureImages[index]}" class="exposure-image">
+                <div class="exposure-text">If you don't agree… I might expose you 👀</div>
+            `;
+            document.body.appendChild(overlay);
+            
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 500);
+            }, 3000);
+        }
+
+        function handleYes() {
+            // Create heart burst particles
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-burst';
+                    heart.textContent = ['💕', '💖', '💗', '💝', '❤️'][Math.floor(Math.random() * 5)];
+                    heart.style.left = (Math.random() * 100) + '%';
+                    heart.style.top = '50%';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }, i * 50);
+            }
+            
+            // Create elegant gold confetti
+            const colors = ['#ffd700', '#ffb6c1', '#ff69b4', '#f5a7b8', '#d47a8c'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+            
+            // Add premium gold shimmer particles
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'gold-particle';
+                    particle.style.left = (Math.random() * 100) + '%';
+                    particle.style.bottom = '0';
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 2000);
+                }, i * 40);
+            }
+            
+            setTimeout(() => goToStage(7), 2500);
+        }
+
+        // ===== FLOATING HEARTS =====
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['💕', '💖', '💗', '💝'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        window.onload = () => createFloatingHearts();
+    </script>
+</body>
+</html>
